@@ -1,0 +1,221 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{##}
+{#<table width="630" height="236" border="1">#}
+{#<form action="search_bus_stops" method="post">#}
+{#  <tr>#}
+{#    <td height="73" colspan="7"><label>#}
+{#      <div align="right">#}
+{#        Route#}
+{#        <select name="select" value="{{ stop }}">#}
+{#            {% for i in rout %}#}
+{#            <option value="{{i.id}}" >{{i.route.from_rout}} -- {{i.route.to_rout}}</option>#}
+{#            {% endfor %}#}
+{#          </select>#}
+{#        <input type="submit" name="Submit" value="Search" />#}
+{#      </div>#}
+{##}
+{#      </label>#}
+{#      <label></label></td>#}
+{#  </tr>#}
+{#</form>#}
+{#  <tr>#}
+{#    <td width="63">No.</td>#}
+{#    <td width="63">Route</td>#}
+{#    <td width="75">Stop</td>#}
+{#    <td width="63">Fair</td>#}
+{#    <td width="87">Stage</td>#}
+{#    <td width="78">&nbsp;</td>#}
+{#      <td width="78">&nbsp;</td>#}
+{#  </tr>#}
+{#      {% for i in rout %}#}
+{#  <tr>#}
+{#  <td>{{ forloop.counter }}</td>#}
+{#    <td height="99">{{ i.route.from_rout }}<p>-</p>{{ i.route.to_rout }}</td>#}
+{#    <td>&nbsp;{{ i.stopname }}</td>#}
+{#    <td>&nbsp;{{ i.fair }}</td>#}
+{#    <td>{{ i.stage }}</td>#}
+{#    <td><a href="#">Track</a></td>#}
+{#    <td><p><a href="#"></a></p>#}
+{#      <p><a href="/edit_stopadd/{{ i.id }}">Edit</a></p>#}
+{#      <p><a href="/delete_stopmanagment/{{ i.id }}">Delete</a></p>#}
+{#      <p>&nbsp;</p></td>#}
+{#    </tr>#}
+{#    {% endfor %}#}
+{#  <tr>#}
+{#    <td height="23" colspan="7"><div align="center">#}
+{#        <label>#}
+{#        <a href="/stopadd">add new route</a>#}
+{#        </label>#}
+{#    </div></td>#}
+{#  </tr>#}
+{#</table>#}
+{#<div align="center"></div>#}
+{##}
+{#</body>#}
+{#</html>#}
+{##}
+{##}
+{##}
+
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Bus Stop Management</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-top: 20px;
+    }
+
+    table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    table th, table td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    table th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    table tr:hover {
+        background-color: #ddd;
+    }
+
+    select, input[type="submit"] {
+        padding: 8px 16px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    .search-section {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+        padding-right: 20px;
+    }
+
+    .search-section select {
+        width: 300px;
+        margin-right: 10px;
+    }
+
+    .action-links a {
+        color: #007BFF;
+        text-decoration: none;
+        margin-right: 10px;
+    }
+
+    .action-links a:hover {
+        text-decoration: underline;
+    }
+
+    .add-new-route {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .add-new-route a {
+        color: #4CAF50;
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+    .add-new-route a:hover {
+        text-decoration: underline;
+    }
+
+</style>
+</head>
+
+<body>
+
+<h1>Bus Stop Management</h1>
+
+<div class="search-section">
+    <form action="search_bus_stops" method="post">
+        {% csrf_token %}
+        <label for="route">Route</label>
+        <select name="select" value="{{ stop }}">
+            {% for i in rout %}
+            <option value="{{ i.id }}">{{ i.route.from_rout }} -- {{ i.route.to_rout }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" name="Submit" value="Search" />
+    </form>
+</div>
+
+<table>
+    <tr>
+        <th>No.</th>
+        <th>Route</th>
+        <th>Stop</th>
+        <th>Fair</th>
+        <th>Stage</th>
+        <th>Track</th>
+        <th>Actions</th>
+    </tr>
+    {% for i in rout %}
+    <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ i.route.from_rout }} - {{ i.route.to_rout }}</td>
+        <td>{{ i.stopname }}</td>
+        <td>{{ i.fair }}</td>
+        <td>{{ i.stage }}</td>
+        <td><a href="#">Track</a></td>
+        <td class="action-links">
+            <a href="/edit_stopadd/{{ i.id }}">Edit</a>
+            <a href="/delete_stopmanagment/{{ i.id }}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<div class="add-new-route">
+    <a href="/stopadd">Add New Route</a>
+</div>
+
+</body>
+</html>

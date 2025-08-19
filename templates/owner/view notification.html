@@ -1,0 +1,159 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/owner_view_notification ">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td>Date</td>#}
+{#      <td>Notification</td>#}
+{#      <td>details</td>#}
+{#    </tr>#}
+{#        {% for i in data %}#}
+{#    <tr>#}
+{##}
+{#      <td>&nbsp;{{ i.date}}</td>#}
+{#      <td> {{ i.notification }}&nbsp;</td>#}
+{#      <td> {{ i.details }}&nbsp;</td>#}
+{#    </tr>#}
+{##}
+{#        {% endfor %}#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+
+
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{% extends 'owner/demoindex.html' %}
+{% block body %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Notifications</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        td, th {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+            color: #333;
+        }
+
+        td a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        td a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .btn-link {
+            padding: 10px 15px;
+            color: #fff;
+            background-color: #007BFF;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .btn-link:hover {
+            background-color: #0056b3;
+        }
+
+        .add-new-btn {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .add-new-btn a {
+            text-align: center;
+            font-size: 16px;
+            color: white;
+            background-color: #28a745;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .add-new-btn a:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Owner Notifications</h1>
+<form id="form1" name="form1" method="post" action="/owner_view_notification">
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Notification</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr>
+                <td>{{ i.date }}</td>
+                <td>{{ i.notification }}</td>
+                <td>{{ i.details }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</form>
+
+</body>
+{#</html>#}
+{% endblock %}

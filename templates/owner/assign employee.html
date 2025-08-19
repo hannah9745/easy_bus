@@ -1,0 +1,150 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/add_assignemployee_post">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td>Bus</td>#}
+{#      <td><label>#}
+{#          <select name="select">#}
+{#            {% for i in bus %}#}
+{#                <option value="{{ i.id }}">{{ i.name }}</option>#}
+{#            {% endfor %}#}
+{#        </select>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td colspan="2"><label>#}
+{#        <div align="center">#}
+{#          <input type="submit" name="Submit" value="ASSIGN" />#}
+{#          </div>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{% extends 'owner/demoindex.html' %}
+{% block body %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Assign Bus to Employee</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        td {
+            padding: 12px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        td label {
+            font-weight: bold;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        select:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<h1>Assign Bus to Employee</h1>
+<form id="form1" name="form1" method="post" action="/add_assignemployee_post">
+    <table>
+        <tr>
+            <td><label for="bus">Bus</label></td>
+            <td>
+                <select name="select" id="bus" required>
+                    {% for i in bus %}
+                        <option value="{{ i.id }}">{{ i.name }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" class="center">
+                <input type="submit" name="Submit" value="ASSIGN" />
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+{#</html>#}
+{% endblock %}

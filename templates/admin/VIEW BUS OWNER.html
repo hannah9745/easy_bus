@@ -1,0 +1,169 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="679" height="187" border="1">#}
+{#    <tr>#}
+{#      <td>NAME</td>#}
+{#      <td>PLACE</td>#}
+{#      <td>POST</td>#}
+{#      <td>PIN</td>#}
+{#      <td>PHONE</td>#}
+{#      <td>EMAIL</td>#}
+{#      <td>USERNAME</td>#}
+{#      <td>PASSWORD</td>#}
+{#      <td>&nbsp;</td>#}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#      <td>&nbsp;{{ i.name }}</td>#}
+{#      <td>&nbsp;{{ i.place }}</td>#}
+{#      <td>&nbsp;{{ i.post }}</td>#}
+{#      <td>{{ i.pin }}&nbsp;</td>#}
+{#      <td>{{ i.phone }}&nbsp;</td>#}
+{#      <td>{{ i.email }}&nbsp;</td>#}
+{##}
+{#      <td><p><a href="/edit_busowner/{{ i.id }}">EDIT</a></p>#}
+{#      <p><a href="/view_bussowner_delete/{{ i.login.id }}">DELETE</a></p></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Bus Owner List</title>
+
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 20px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        td a {
+            text-decoration: none;
+            padding: 5px 10px;
+            color: #fff;
+            border-radius: 4px;
+            background-color: #4CAF50;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        td a:hover {
+            background-color: #45a049;
+        }
+
+        td a.delete {
+            background-color: #f44336;
+        }
+
+        td a.delete:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            table {
+                font-size: 14px;
+            }
+
+            th, td {
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Bus Owner List</h1>
+
+    <form id="form1" name="form1" method="post" action="">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>NAME</th>
+                    <th>PLACE</th>
+                    <th>POST</th>
+                    <th>PIN</th>
+                    <th>PHONE</th>
+                    <th>EMAIL</th>
+                    <th>ACTIONS</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in val %}
+                <tr>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.place }}</td>
+                    <td>{{ i.post }}</td>
+                    <td>{{ i.pin }}</td>
+                    <td>{{ i.phone }}</td>
+                    <td>{{ i.email }}</td>
+                    <td>
+                        <a href="/edit_busowner/{{ i.id }}" class="edit">EDIT</a>
+                        <a href="/view_bussowner_delete/{{ i.login.id }}" class="delete">DELETE</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </form>
+
+</body>
+</html>

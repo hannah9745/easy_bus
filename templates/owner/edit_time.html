@@ -1,0 +1,167 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/edit_viewtime_post">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td>Stop</td>#}
+{#      <td><label>#}
+{#        <select name="select">#}
+{#            {% for ii in val %}#}
+{#            <option value="{{ ii.id }}" {% if i.stop.id == ii.id %} selected {% endif %}>{{ ii.stopname }}</option>#}
+{#            {% endfor %}#}
+{##}
+{#        </select>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>Timer</td>#}
+{#      <td><label>#}
+{#       <input type="time" name="textfield" value="{{ i.time}}" />#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td colspan="2"><label>#}
+{#        <div align="center">#}
+{#          <input type="submit" name="Submit" value="submit" />#}
+{#          </div>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{% extends 'owner/demoindex.html' %}
+{% block body %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Edit View Time</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 12px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        td label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        input[type="time"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input[type="text"]:focus,
+        input[type="file"]:focus,
+        input[type="time"]:focus,
+        select:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<h1>Edit View Time</h1>
+<form action="/edit_viewtime_post" method="post">
+    <table>
+        <tr>
+            <td><label for="stop">Stop</label></td>
+            <td>
+                <select name="select" id="stop">
+                    {% for ii in val %}
+                        <option value="{{ ii.id }}" {% if i.stop.id == ii.id %} selected {% endif %}>
+                            {{ ii.stopname }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="timer">Timer</label></td>
+            <td><input type="time" name="textfield" id="timer" value="{{ i.time }}" required /></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="center">
+                <input type="submit" name="Submit" value="Submit" />
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+{#</html>#}
+{% endblock %}

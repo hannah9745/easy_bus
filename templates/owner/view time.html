@@ -1,0 +1,166 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td>Stop</td>#}
+{#      <td><p>Time</p>#}
+{#          <p>&nbsp;</p></td>#}
+{#         <td></td>#}
+{#    </tr>#}
+{##}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#      <td>&nbsp;{{ i.stop.stopname }}</td>#}
+{#      <td>&nbsp;{{ i.time }}</td>#}
+{#    <td><a href="/edit_viewtime/{{ i.id }}">edit</a> <br/>#}
+{#    <a href="/delete_viewtime/{{ i.id }}">delete</a> </td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#      <tr>#}
+{#          <td colspan="2"><a href=" /addtime">add time</a> </td>#}
+{#      </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{% extends 'owner/demoindex.html' %}
+{% block body %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>View Time</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        form {
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        td, th {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+            color: #333;
+        }
+
+        td a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        td a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .add-new-btn {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .add-new-btn a {
+            text-align: center;
+            font-size: 16px;
+            color: white;
+            background-color: #28a745;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .add-new-btn a:hover {
+            background-color: #218838;
+        }
+
+        .table-header {
+            background-color: #f8f9fa;
+        }
+
+        .table-header td {
+            font-weight: bold;
+            color: #495057;
+        }
+
+        /* Optional: Style for empty cells to ensure they don't collapse or look awkward */
+        td.empty {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+
+<body>
+
+<form id="form1" name="form1" method="post" action="">
+    <table>
+        <thead>
+            <tr class="table-header">
+                <td>Stop</td>
+                <td>Time</td>
+                <td>Actions</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in val %}
+            <tr>
+                <td>{{ i.stop.stopname }}</td>
+                <td>{{ i.time }}</td>
+                <td>
+                    <a href="/edit_viewtime/{{ i.id }}">edit</a><br />
+                    <a href="/delete_viewtime/{{ i.id }}">delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="add-new-btn">
+                    <a href="/addtime">Add Time</a>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</form>
+
+</body>
+{#</html>#}
+{% endblock %}

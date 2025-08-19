@@ -1,0 +1,168 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/edit_notification_post">#}
+{#  <table width="292" border="1">#}
+{#    <tr>#}
+{#      <td>Notification</td>#}
+{#      <td><label>#}
+{#      <input type="hidden" name="data" value="{{ data.id }}" />#}
+{#      <input type="text" name="textfield2" value="{{ data.notification }}" />#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>Details</td>#}
+{#      <td><label>#}
+{#        <input type="text" name="textfield" value="{{ data.details }}" />#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td height="72" colspan="2"><label>#}
+{#        <div align="center">#}
+{#          <input type="submit" name="Submit" value="SAVE" />#}
+{#          </div>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Edit Notification</title>
+    <style>
+        /* Reset default styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 30px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        td {
+            padding: 12px;
+            vertical-align: middle;
+            font-size: 16px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        td input[type="text"] {
+            padding: 8px;
+            width: 100%;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            transition: border-color 0.3s ease;
+        }
+
+        td input[type="text"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .form-heading {
+            font-size: 20px;
+            color: #4CAF50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            table {
+                font-size: 14px;
+            }
+
+            input[type="text"] {
+                width: 100%;
+            }
+
+            input[type="submit"] {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Edit Notification</h1>
+    <form id="form1" name="form1" method="post" action="/edit_notification_post">
+        <input type="hidden" name="data" value="{{ data.id }}" />
+        <div class="form-heading">Update Notification Details</div>
+
+        <table>
+            <tr>
+                <td>Notification</td>
+                <td>
+                    <input type="text" name="textfield2" value="{{ data.notification }}" placeholder="Enter notification title" />
+                </td>
+            </tr>
+            <tr>
+                <td>Details</td>
+                <td>
+                    <input type="text" name="textfield" value="{{ data.details }}" placeholder="Enter notification details" />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div style="text-align:center;">
+                        <input type="submit" name="Submit" value="SAVE" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

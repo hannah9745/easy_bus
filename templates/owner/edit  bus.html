@@ -1,0 +1,189 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form action="/edit_bus_post" method="post" enctype="multipart/form-data" name="form1" id="form1">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td>Bus Name </td>#}
+{#      <td><a href="#">#}
+{#        <label>#}
+{#        <input type="text" name="textfield" value="{{ i.name }}" />#}
+{#        </label>#}
+{#      </a></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>Reg No. </td>#}
+{#      <td><a href="#">#}
+{#        <input type="text" name="textfield2" value="{{ i.regno }}"/>#}
+{#      </a></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>Photo</td>#}
+{#      <td><label>#}
+{#        <input type="file" name="file" value="{{ i.photo }}"/>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>Fitness</td>#}
+{#      <td><a href="#">#}
+{#        <input type="text" name="textfield3" value="{{ i.fitness }}" />#}
+{#      </a></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>Insurence</td>#}
+{#      <td><a href="#">#}
+{#        <input type="text" name="textfield4" value="{{ i.insurance }}"/>#}
+{#      </a></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>RC Book </td>#}
+{#      <td><input type="file" name="file2" value="{{ i.rcbook }}"/></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td colspan="2"><label>#}
+{#        <div align="center">#}
+{#          <input type="submit" name="Submit" value="ADD" />#}
+{#          </div>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{% extends 'owner/demoindex.html' %}
+{% block body %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Edit Bus Details</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 12px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        td label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input[type="text"]:focus,
+        input[type="file"]:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<h1>Edit Bus Details</h1>
+<form action="/edit_bus_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    <table>
+        <tr>
+            <td><label for="busName">Bus Name</label></td>
+            <td><input type="text" name="textfield" id="busName" value="{{ i.name }}" required  pattern="[A-Z a-z.]{3,25}"/></td>
+        </tr>
+        <tr>
+            <td><label for="regNo">Reg No.</label></td>
+            <td><input type="text" name="textfield2" id="regNo" value="{{ i.regno }}" required /></td>
+        </tr>
+        <tr>
+            <td><label for="photo">Photo</label></td>
+            <td><input type="file" name="file" id="photo" required/></td>
+        </tr>
+        <tr>
+            <td><label for="fitness">Fitness</label></td>
+            <td><input type="text" name="textfield3" id="fitness" value="{{ i.fitness }}" required /></td>
+        </tr>
+        <tr>
+            <td><label for="insurance">Insurance</label></td>
+            <td><input type="text" name="textfield4" id="insurance" value="{{ i.insurance }}" required /></td>
+        </tr>
+        <tr>
+            <td><label for="rcBook">RC Book</label></td>
+            <td><input type="file" name="file2" id="rcBook" required/></td>
+        </tr>
+        <tr>
+            <td colspan="2" class="center">
+                <input type="submit" name="Submit" value="Update Bus Details" />
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+{#</html>#}
+{% endblock %}

@@ -1,0 +1,182 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#  <table width="537" height="230" border="1">#}
+{#    <tr>#}
+{#      <td width="216"><div align="center">Notification</div></td>#}
+{#      <td width="160"><div align="center">Details</div></td>#}
+{#      <td width="61"><div align="center">Data</div></td>#}
+{#      <td width="118">&nbsp;</td>#}
+{#    </tr>#}
+{#      {% for i in data %}#}
+{#    <tr>#}
+{#      <td>&nbsp;{{ i.notification }}</td>#}
+{#      <td>{{i.date}}</td>#}
+{#      <td>{{ i.details }}</td>#}
+{#      <td><p align="center"><a href="/edit_notification/{{ i.id }}">Edit</a></p>#}
+{#      <p align="center"><a href="/notification_delete/{{ i.id }}">Delete</a></p></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#    <tr>#}
+{#      <td colspan="4"><label>#}
+{#        <div align="center">#}
+{#          <a href="/add_notification">ADD NEW</a>#}
+{#          </div>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#  <label></label>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+{% extends 'admin/adminindex.html' %}
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Management</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 20px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .actions {
+            text-align: center;
+        }
+
+        .actions a {
+            margin: 0 10px;
+            padding: 8px 16px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .actions a:hover {
+            background-color: #218838;
+        }
+
+        .add-new {
+            display: block;
+            width: 200px;
+            margin: 30px auto 0;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .add-new:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            table {
+                font-size: 14px;
+            }
+
+            th, td {
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Notification Management</h1>
+
+    <form id="form1" name="form1" method="post" action="">
+        <table>
+            <thead>
+                <tr>
+                    <th>Notification</th>
+                    <th>Details</th>
+                    <th>Data</th>
+                    <th class="actions">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in data %}
+                <tr>
+                    <td>{{ i.notification }}</td>
+                    <td>{{ i.date }}</td>
+                    <td>{{ i.details }}</td>
+                    <td class="actions">
+                        <a href="/edit_notification/{{ i.id }}">Edit</a>
+                        <a href="/notification_delete/{{ i.id }}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="/add_notification#about" class="add-new">Add New Notification</a>
+    </form>
+
+</body>
+{% endblock %}

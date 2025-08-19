@@ -1,0 +1,203 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/add_bus_to_route_post">#}
+{#  <table width="200" border="1">#}
+{##}
+{#<tr>#}
+{#      <td width="165">Rout</td>#}
+{#      <td width="99"><label>#}
+{#        <select name="select">#}
+{#            {% for i in rout %}#}
+{#                <option value="{{ i.id }}">From: {{ i.from_rout }}- To:{{ i.to_rout}}</option>#}
+{#            {% endfor %}#}
+{#        </select>#}
+{#      </label></td>#}
+{#    </tr>#}
+{##}
+{#<tr>#}
+{#      <td width="165">Bus</td>#}
+{#      <td width="99"><label>#}
+{#        <select name="select1">#}
+{#            {% for i in bus %}#}
+{#                <option value="{{ i.id }}">{{ i.name }}</option>#}
+{#            {% endfor %}#}
+{#        </select>#}
+{#      </label></td>#}
+{#    </tr>#}
+{##}
+{#<tr>#}
+{#      <td width="165">Trip</td>#}
+{#      <td width="99"><label>#}
+{#        <select name="select">#}
+{#            {% for i in trip %}#}
+{#                <option value="{{ i.id }}">{{ i.tripname}}</option>#}
+{#            {% endfor %}#}
+{#        </select>#}
+{#          #}
+{#      </label></td>#}
+{#     <td width="78">Trip</td>#}
+{#      <td width="181"><label>#}
+{#        <input type="text" name="textfield" />#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td colspan="2"><div align="center">#}
+{#        <input type="submit" name="Submit" value="ADD" />#}
+{#      </div></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{% extends 'owner/demoindex.html' %}
+{% block body %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Add Bus to Route</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        td {
+            padding: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        td label {
+            font-weight: bold;
+        }
+
+        select, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        select:focus, input[type="text"]:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        /* Label for fields */
+        td label {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Add Bus to Route</h1>
+<form id="form1" name="form1" method="post" action="/add_bus_to_route_post">
+    <table>
+        <tr>
+            <td width="165"><label for="route">Route</label></td>
+            <td width="99">
+                <select name="select" id="route" required>
+                    {% for i in rout %}
+                        <option value="{{ i.id }}">From: {{ i.from_rout }} - To: {{ i.to_rout }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td width="165"><label for="bus">Bus</label></td>
+            <td width="99">
+                <select name="select1" id="bus" required>
+                    {% for i in bus %}
+                        <option value="{{ i.id }}">{{ i.name }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td width="78"><label for="trip">Trip</label></td>
+            <td width="181">
+                <input type="text" name="textfield" id="trip" placeholder="Enter trip name" required />
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" class="center">
+                <input type="submit" name="Submit" value="ADD" />
+            </td>
+        </tr>
+    </table>
+</form>
+
+</body>
+{#</html>#}
+{% endblock %}

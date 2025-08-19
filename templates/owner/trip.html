@@ -1,0 +1,195 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/    ">#}
+{#  <table width="440" height="262" border="1">#}
+{#    <tr>#}
+{#      <td colspan="4"><label>#}
+{#        <div align="right">Trip Name#}
+{#          <input type="text" name="textfield" />#}
+{#          <input type="submit" name="Submit" value="SEARCH" />#}
+{#        </div>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>Rout</td>#}
+{#      <td>Bus</td>#}
+{#      <td>Trip Name </td>#}
+{#      <td>&nbsp;</td>#}
+{#    </tr>#}
+{#      {% for i in data %}#}
+{#    <tr>#}
+{#        <td>&nbsp;From:{{ i.route.from_rout }} </br>#}
+{#            To:{{ i.route.to_rout }}#}
+{#        </td>#}
+{#      <td>{{ i.bus.name }}&nbsp;</td>#}
+{#      <td>&nbsp;{{ i.tripname }}</td>#}
+{#      <td><p><a href="/delete_trip/{{ i.id }}">DELETE</a></p>#}
+{#      <p><a href="/viewtime/{{ i.id }}">ADD TIME </a></p>      </td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#    <tr>#}
+{#     <a href="/add_bus_to_route">add new</a>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{% extends 'owner/demoindex.html' %}
+{% block body %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Trip Management</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        td, th {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+            color: #333;
+        }
+
+        td a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        td a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        td p {
+            margin: 5px 0;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .btn-link {
+            padding: 10px 15px;
+            color: #fff;
+            background-color: #007BFF;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .btn-link:hover {
+            background-color: #0056b3;
+        }
+
+        .add-new-btn {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .add-new-btn a {
+            text-align: center;
+            font-size: 16px;
+            color: white;
+            background-color: #28a745;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .add-new-btn a:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Trip Management</h1>
+<form id="form1" name="form1" method="post" action="/">
+    <table>
+        <thead>
+            <tr>
+                <td colspan="4" style="text-align: right; padding-right: 20px;">
+                    Trip Name
+                    <input type="text" name="textfield" style="padding: 5px; width: 200px;" />
+                    <input type="submit" name="Submit" value="SEARCH" class="btn-link" />
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Route</strong></td>
+                <td><strong>Bus</strong></td>
+                <td><strong>Trip Name</strong></td>
+                <td><strong>Actions</strong></td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr>
+                <td>
+                    From: {{ i.route.from_rout }} <br />
+                    To: {{ i.route.to_rout }}
+                </td>
+                <td>{{ i.bus.name }}</td>
+                <td>{{ i.tripname }}</td>
+                <td>
+                    <p><a href="/delete_trip/{{ i.id }}" class="btn-link">DELETE</a></p>
+                    <p><a href="/viewtime/{{ i.id }}" class="btn-link">ADD TIME</a></p>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="add-new-btn">
+        <a href="/add_bus_to_route">Add New Trip</a>
+    </div>
+</form>
+
+</body>
+{#</html>#}
+{% endblock %}

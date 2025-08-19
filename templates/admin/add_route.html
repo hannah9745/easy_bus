@@ -1,0 +1,166 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/add_route_post">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td>From</td>#}
+{#      <td><label>#}
+{#        <input type="text" name="from" value="{{ val.from_rout }}" />#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td>To</td>#}
+{#      <td><input type="text" name="to" value="{{ val.to_rout }}" /></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td colspan="2"><div align="center">#}
+{#        <label>#}
+{#        <input type="submit" name="Submit" value="ADD" />#}
+{#        </label>#}
+{#      </div></td>#}
+{#    </tr>#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+
+{#{% extends 'admin/adminindex.html' %}#}
+{#{% block body %}#}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Add Route</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            padding: 40px;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 12px;
+            vertical-align: middle;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        td input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        td input:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        /* Submit Button */
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Table Styles */
+        td:first-child {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            form {
+                padding: 20px;
+                width: 100%;
+            }
+
+            td input {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            input[type="submit"] {
+                font-size: 14px;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Add New Route</h1>
+
+    <form id="form1" name="form1" method="post" action="/add_route_post">
+        <table>
+            <tr>
+                <td>From</td>
+                <td><input type="text" name="from" value="{{ val.from_rout }}" required pattern="[A-Z a-z.]{3,25}" title="add a valid rout"/></td>
+            </tr>
+            <tr>
+                <td>To</td>
+                <td><input type="text" name="to" value="{{ val.to_rout }}" required pattern="[A-Z a-z.]{3,25}" title="add a valid rout      "/></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div style="text-align: center;">
+                        <input type="submit" name="Submit" value="ADD" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
+{#<en></en>dblock %}#}

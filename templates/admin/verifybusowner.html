@@ -1,0 +1,217 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="">#}
+{#<H1>VERIFY BUS OWNER</H1>#}
+{#  <table width="421" height="224" border="1">#}
+{#    <tr>#}
+{#      <td colspan="5"><label>#}
+{#        <div align="right">#}
+{#          <input type="text" name="textfield" />#}
+{#          <input type="submit" name="Submit" value="Submit" />#}
+{#        </div>#}
+{#      </label></td>#}
+{#    </tr>#}
+{#    <tr>#}
+{#      <td width="31">Name</td>#}
+{#      <td width="81">Adress</td>#}
+{#      <td width="67">Phone no. </td>#}
+{#      <td width="67">Email</td>#}
+{#      <td width="67">&nbsp;</td>#}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#      <td>{{ i.name }}&nbsp;</td>#}
+{#      <td>{{ i.place }}&nbsp;</td>#}
+{#      <td>{{ i.phone }}&nbsp;</td>#}
+{#      <td>&nbsp;{{ i.email  }}</td>#}
+{#      <td><p><a href="#">Accept</a></p>#}
+{#      <p><a href="/delete_new_owner/{{ i.id }}">reject</a></p></td>#}
+{##}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#  </table>#}
+{#  <a href="#"></a>#}
+{#  <p>&nbsp;</p>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+{##}
+{##}
+{##}
+{##}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Verify Bus Owner</title>
+<style type="text/css">
+    /* General body styling */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f7f6;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        color: #333;
+    }
+
+    /* Main form container */
+    form {
+        width: 80%;
+        max-width: 900px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+    }
+
+    /* Heading */
+    h1 {
+        text-align: center;
+        font-size: 24px;
+        color: #4CAF50;
+        margin-bottom: 20px;
+    }
+
+    /* Search bar and submit button container */
+    .form-header {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+    }
+
+    .form-header input[type="text"] {
+        padding: 10px;
+        width: 75%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        margin-right: 10px;
+    }
+
+    .form-header input[type="submit"] {
+        padding: 10px 16px;
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .form-header input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    /* Table styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    td {
+        background-color: #f9f9f9;
+    }
+
+    tr:nth-child(even) td {
+        background-color: #f2f2f2;
+    }
+
+    /* Styling for action links (Accept / Reject) */
+    a {
+        color: #007bff;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    a:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
+
+    .action-links {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+    }
+
+    .action-links a {
+        padding: 6px 12px;
+        background-color: #d9534f;
+        color: white;
+        border-radius: 4px;
+        text-align: center;
+    }
+
+    .action-links a:hover {
+        background-color: #c9302c;
+    }
+
+</style>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+    <h1>Verify Bus Owner</h1>
+
+    <!-- Search bar and submit button -->
+    <div class="form-header">
+        <input type="text" name="textfield" placeholder="Search for a bus owner..." />
+        <input type="submit" name="Submit" value="Submit" />
+    </div>
+
+    <!-- Table displaying bus owners -->
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Phone No.</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in val %}
+            <tr>
+                <td>{{ i.name }}</td>
+                <td>{{ i.place }}</td>
+                <td>{{ i.phone }}</td>
+                <td>{{ i.email }}</td>
+                <td class="action-links">
+                    <a href="/accept_owner/{{ i.login.id }}">Accept</a>
+                    <a href="/reject_owner/{{ i.login.id }}">Reject</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</form>
+</body>
+</html>
+

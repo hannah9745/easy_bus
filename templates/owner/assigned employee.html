@@ -1,0 +1,144 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
+{#<title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form id="form1" name="form1" method="post" action="/">#}
+{#  <table width="200" border="1">#}
+{#    <tr>#}
+{#      <td>EMPLOYE</td>#}
+{#      <td>BUS</td>#}
+{#      <td>DATE</td>#}
+{#      <td>STATUS</td>#}
+{#      <td><p>&nbsp;</p>          </td>#}
+{#    </tr>#}
+{#      {% for i in val %}#}
+{#    <tr>#}
+{#      <td>&nbsp;{{ i.employe.name }}</td>#}
+{#      <td>{{ i.bus.name }}&nbsp;</td>#}
+{#      <td>&nbsp;{{ i.date}}</td>#}
+{#      <td>{{ i.status }}&nbsp;</td>#}
+{#      <td>&nbsp;<a href="/delete_assignedemp/{{ i.id }}">delete</a> </td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#  </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{% extends 'owner/demoindex.html' %}
+{% block body %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Employee Bus Assignment</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+            color: #333;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+            color: #333;
+        }
+
+        td a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        td a:hover {
+            text-decoration: underline;
+        }
+
+        /* Styling the table rows */
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Center align buttons */
+        .center {
+            text-align: center;
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1 class="heading">Employee Bus Assignment</h1>
+
+    <form id="form1" name="form1" method="post" action="/">
+        <table>
+            <tr>
+                <th>Employee</th>
+                <th>Bus</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            {% for i in val %}
+            <tr>
+                <td>{{ i.employe.name }}</td>
+                <td>{{ i.bus.name }}</td>
+                <td>{{ i.date }}</td>
+                <td>{{ i.status }}</td>
+                <td><a href="/delete_assignedemp/{{ i.id }}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+
+</body>
+{#</html>#}
+{% endblock %}

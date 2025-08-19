@@ -1,0 +1,297 @@
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"#}
+{#        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>#}
+{#    <title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form action="/addemploye_post" method="post" enctype="multipart/form-data" name="form1" id="form1">#}
+{#    <table width="200" border="1">#}
+{#        <tr>#}
+{#            <td>Name</td>#}
+{#            <td><label>#}
+{#                <input type="text" name="textfield"/>#}
+{#            </label></td>#}
+{#        </tr>#}
+{#         <tr>#}
+{#            <td>dob</td>#}
+{#            <td><label>#}
+{#                <input type="text" name="dob"/>#}
+{#            </label></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Phone</td>#}
+{#            <td><input type="text" name="textfield3"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Email</td>#}
+{#            <td><input type="text" name="textfield4"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Place</td>#}
+{#            <td><input type="text" name="textfield5"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Post</td>#}
+{#            <td><input type="text" name="textfield6"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>pin</td>#}
+{#            <td><input type="text" name="textfield7"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Image</td>#}
+{#            <td><label>#}
+{#                <input type="file" name="file"/>#}
+{#            </label></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Lisence</td>#}
+{#            <td><input type="text" name="textfield10"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Username</td>#}
+{#            <td><label>#}
+{#                <input type="text" name="textfield8"/>#}
+{#            </label></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Password</td>#}
+{#            <td><label>#}
+{#                <input type="text" name="textfield9"/>#}
+{#            </label></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td colspan="2"><label>#}
+{#                <div align="center">#}
+{#                    <input type="submit" name="Submit" value="REGISTER"/>#}
+{#                </div>#}
+{#            </label></td>#}
+{#        </tr>#}
+{#    </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"#}
+{#        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{#<head>#}
+{#    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>#}
+{#    <title>Untitled Document</title>#}
+{#</head>#}
+{##}
+{#<body>#}
+{#<form action="edit_manageemployee_post" method="post" enctype="multipart/form-data" name="form1" id="form1">#}
+{#    <table width="200" border="1">#}
+{#        <tr>#}
+{#            <td>Name</td>#}
+{#            <td><label>#}
+{#              <input type="text" name="textfield" value="{{ i.name }}" />#}
+{#            </label></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Phone</td>#}
+{#            <td><input type="text" name="textfield3" value="{{ i.phoneno }}"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Email</td>#}
+{#            <td><input type="text" name="textfield4" value="{{ i.email }}"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Place</td>#}
+{#            <td><input type="text" name="textfield5" value="{{ i.place }}" /></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Post</td>#}
+{#            <td><input type="text" name="textfield6" value="{{ i.post }}"/></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>pin</td>#}
+{#            <td><input type="text" name="textfield7" /></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Image</td>#}
+{#            <td><label>#}
+{#                <input type="file" name="file" value="{{ i.image }}"/>#}
+{#            </label></td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>Lisence</td>#}
+{#            <td><input type="text" name="textfield10" value="{{ i.license }}"/></td>#}
+{#        </tr>#}
+{##}
+{#        <tr>#}
+{#            <td colspan="2"><label>#}
+{#                <div align="center">#}
+{#                    <input type="submit" name="Submit" value="update"/>#}
+{#                </div>#}
+{#            </label></td>#}
+{#        </tr>#}
+{#    </table>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}
+
+{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
+{#<html xmlns="http://www.w3.org/1999/xhtml">#}
+{% extends 'owner/demoindex.html' %}
+{% block body %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>Edit Employee</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        form {
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        td, th {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+            color: #333;
+        }
+
+        td input[type="text"],
+        td input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        td input[type="text"]:focus,
+        td input[type="file"]:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        td input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        td input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Label Styling */
+        label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        /* Centering submit button */
+        .center {
+            text-align: center;
+        }
+
+        /* Optional: Style for the table header */
+        table tr:first-child td {
+            background-color: #f8f9fa;
+            font-weight: bold;
+            color: #495057;
+        }
+
+        /* Styling for the overall form */
+        .form-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* Optional: Styling for the page background */
+        body {
+            background-color: #eef1f4;
+            font-family: Arial, sans-serif;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <form action="edit_manageemployee_post" method="post" enctype="multipart/form-data" name="form1" id="form1">
+        <div class="form-container">
+            <h2>Edit Employee Details</h2>
+            <table>
+                <tr>
+                    <td><label for="name">Name</label></td>
+                    <td><input type="text" id="name" name="textfield" value="{{ i.name }}" required pattern="[A-Z a-z.]{3,25}" /></td>
+                </tr>
+                <tr>
+                    <td><label for="phone">Phone</label></td>
+                    <td><input type="text" id="phone" name="textfield3" value="{{ i.phoneno }}" required pattern="[6789][0-9]{9}"/></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email</label></td>
+                    <td><input type="text" id="email" name="textfield4" value="{{ i.email }}"  required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" title="enter valid Email" /></td>
+                </tr>
+                <tr>
+                    <td><label for="place">Place</label></td>
+                    <td><input type="text" id="place" name="textfield5" value="{{ i.place }}" pattern="[A-Z a-z.]{3,25}"/></td>
+                </tr>
+                <tr>
+                    <td><label for="post">Post</label></td>
+                    <td><input type="text" id="post" name="textfield6" value="{{ i.post }}" pattern="[A-Z a-z.]{3,25}"/></td>
+                </tr>
+                <tr>
+                    <td><label for="image">Image</label></td>
+                    <td><input type="file" id="image" name="file" value="{{ i.image }}" required/></td>
+                </tr>
+                <tr>
+                    <td><label for="license">License</label></td>
+                    <td><input type="text" id="license" name="textfield10" value="{{ i.license }}" required/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="center">
+                        <input type="submit" name="Submit" value="Update" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+
+</body>
+{#</html>#}
+{% endblock %}
